@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="carrinho-de-compras.css">
+        <link rel="stylesheet" type="text/css" href="carrinho-css.css">
+        <link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+        <link rel="stylesheet" type="text/css" href="../vendors/css/grid.css">
+    </head>
+
+    <body>
+        <section class="header-carrinho"> 
+            <a href="#" title="YAO">
+                <img class="logo-header" src="../resources/img/yao.png" alt="Serviço YAO"
+            </a>
+            <div class="col span-2-of-3">
+                <input type="text" name="barra-pesquisa" id="barra-pesquisa" class="barra-pesquisa" placeholder="O que você procura?" maxlength="100">
+            </div>
+            <button class="pesquisa" type="submit">Buscar</button>
+        </section>
+            
+        <h2> Meu carrinho </h2>    
+        <div id="itens"> </div>
+        <!--<div>Total: <span id="total"></span> </div>-->
+
+        <script>
+         var total = 0; // variável que retorna o total dos produtos que estão na LocalStorage.
+         var i = 0;     // variável que irá percorrer as posições
+         var valor = 0; // variável que irá receber o preço do produto convertido em Float.
+
+         for(i=1; i<=99; i++) // verifica até 99 produtos registrados na localStorage
+         {
+             var prod = localStorage.getItem("produto" + i + ""); // verifica se há recheio nesta posição. 
+             if(prod != null) 
+             {	
+                 // exibe os dados da lista dentro da div itens
+                 document.getElementById("itens").innerHTML += localStorage.getItem("produto" + i)  ;
+                 document.getElementById("itens").innerHTML += localStorage.getItem("qtd" + i) ;
+                                      
+                 document.getElementById("itens").innerHTML += " ";
+                 document.getElementById("itens").innerHTML += "<br>" + "<br>" + "<hr>" + "<br>" ;
+
+                 // calcula o total dos recheios
+                valor = parseFloat(localStorage.getItem("valor" + i)); // valor convertido com o parseFloat()
+                 total = (total + valor); // arredonda para 2 casas decimais com o .toFixed(2)
+             }
+         } 
+        </script>
+            
+         <div>
+                <div class="col span-1-of-3">
+                    <div class="plan-box js--wp-4">
+                        <div>
+                            <h3>FARMÁCIA A</h3>
+                            <p class="plan-price">$399 <span>/ month</span></p>
+                            <p class="plan-price-meal">That's only 13.30$ per meal</p>
+                        </div>
+                        <div>
+                            <ul>
+                                <li><i class="ion-ios-checkmark-empty icon-small"></i>1 meal every day</li>
+                                <li><i class="ion-ios-checkmark-empty icon-small"></i>Order 24/7</li>
+                                <li><i class="ion-ios-checkmark-empty icon-small"></i>Access to newest creations</li>
+                                <li><i class="ion-ios-checkmark-empty icon-small"></i>Free delivery</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <a href="#" class="btn btn-full">Comprar aqui</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col span-1-of-3">
+                    <div class="plan-box">
+                        <div>
+                            <h3>FARMÁCIA B</h3>
+                            <p class="plan-price">$149 <span>/ month</span></p>
+                            <p class="plan-price-meal">That's only 14.90$ per meal</p>
+                        </div>
+                        <div>
+                            <ul>
+                                <li><i class="ion-ios-checkmark-empty icon-small"></i>1 meal 10 days/month</li>
+                                <li><i class="ion-ios-checkmark-empty icon-small"></i>Order 24/7</li>
+                                <li><i class="ion-ios-checkmark-empty icon-small"></i>Access to newest creations</li>
+                                <li><i class="ion-ios-checkmark-empty icon-small"></i>Free delivery</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <a href="#" class="btn btn-ghost">Comprar aqui</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col span-1-of-3">
+                    <div class="plan-box">
+                        <div>
+                            <h3>FARMÁCIA C</h3>
+                            <p class="plan-price">19$ <span>/ meal</span></p>
+                          <p class="plan-price-meal">&nbsp;</p>
+                        </div>
+                        <div>
+                            <ul>
+                                <li><i class="ion-ios-checkmark-empty icon-small"></i>1 meal</li>
+                                <li><i class="ion-ios-checkmark-empty icon-small"></i>Order from 8 am to 12 pm</li>
+                                <li><i class="ion-ios-close-empty icon-small"></i></li>
+                                <li><i class="ion-ios-checkmark-empty icon-small"></i>Free delivery</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <a href="#" class="btn btn-ghost">Comprar aqui</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        <!--    
+        <script>
+         // exibe o total dos recheios
+         document.getElementById("total").innerHTML = total.toFixed(2); 
+        </script>
+
+
+        <script>
+        </script><button type="button" onclick=" localStorage.clear(); location.reload();"> Limpar carrinho </button></script>
+        <script>function msg() {
+                alert("Compra finalizada");
+              }</script>
+          <button onclick="msg()">finalizar compra</button> -->
+    </body> 
+</html>
